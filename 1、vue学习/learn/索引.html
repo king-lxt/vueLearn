@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>索引值</title>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<body>
+	<div id="box">
+		<input type="text" v-model="users" />
+		<ul>  <!--索引-->
+			<li v-for = '(user,index) in users'> {{user}}--{{ index }} </li>
+		</ul>
+		<!--v-on: 的简写 @:-->
+		<!--<button v-on:click='changeLi()'>改变li</button>-->
+		<button @click='changeLi()'>改变li</button>
+	</div>
+	<script src='../js/jquery.js'></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",
+			//初始胡数据
+			data:{
+				users: ['user1','user2','user3']
+			},
+			//自定义的方法
+			methods:{
+				changeLi:function(){
+					console.log(this);
+					this.users = ['Vue','react','angular']
+				}
+			}
+		})
+	</script>
+</body>
+</html>

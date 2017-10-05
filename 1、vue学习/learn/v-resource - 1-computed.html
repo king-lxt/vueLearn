@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>vue-resource</title>
+	<script src="../js/vue.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script> -->
+	<script src ='../js/vue-resourc.js'></script>
+</head>
+<body>
+	<div id="box">
+		<!-- <input type="text" name="text" v-model = "search" @keyUp= 'getData()'> -->
+		<input type="text" name="text" v-model = "search">
+		<ul>
+			<li v-for = "item in list">{{ item }}</li>
+		</ul>
+		{{ newSearch }}
+	</div>
+	<script src='../js/jquery.js'></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",
+			//初始胡数据
+			data:{
+				list:[],
+				search:''
+			},
+			//自定义的方法
+			methods:{
+				getData(){
+					var url2 = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + this.search;
+					this.$http.jsonp(url2,{jsonp:'cb'})
+					.then(function(response){
+						console.log(response.body);
+						this.list = response.body.s;
+					}),function(error){
+						console.log(error);
+					}
+				}
+			},
+			computed:{
+				newSearch(){
+					var arr = ''
+					var url2 = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + this.search;
+					this.$http.jsonp(url2,{jsonp:'cb'})
+					.then(function(response){
+						console.log(response.body);
+						this.list = response.body.s;
+					}),function(error){
+						console.log(error);
+					}
+					console.log(arr + " 123");  //此时arr为空
+					return arr;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

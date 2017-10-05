@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title></title>
+</head>
+<body>
+	<div id="box" >
+		<input type="text" v-model="msg | filterHtml" />
+		{{{ msg }}}
+	</div>
+	
+	
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
+	<script>
+		Vue.filter('filterHtml',{
+			read:function(input){ //model-view
+                return input.replace(/<[^<]+>/g,'');
+            },write:function(val){
+				console.log(val);
+				return val;
+			}
+		})
+		new Vue({
+			el:"#box",
+			data:{
+				msg:"<b>welcome</b>"
+			}
+		});
+		
+	</script>
+</body>
+</html>

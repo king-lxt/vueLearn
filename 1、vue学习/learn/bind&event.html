@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="../js/vue.min.js"></script>
+</head>
+<body>
+	<div id="box">
+		{{ msg }}
+		<hr>
+		{{ msg.split("").reverse().join("") }}
+		<hr>
+		{{ newMsg }}
+		<button type="button" :data-msg = "msg" @click='getInfo($event)'>绑定属性</button>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: "#box",
+			data:{
+				msg: 'vue比react更棒'
+			},
+			methods:{
+				getInfo(event){
+					console.log(event);
+				}
+			},
+			//自定义属性(一开始就触发)
+			computed:{
+				newMsg(){
+					return this.msg.split("").reverse().join("");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

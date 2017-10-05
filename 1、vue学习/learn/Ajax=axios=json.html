@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>axios</title>
+	<script src="../js/vue.min.js"></script>
+	<script src="../js/axios.js"></script>
+</head>
+<body>
+	<div id="box">
+		<button type="button" @click='getData()'>获取数据</button>
+		<ul>
+			<li v-for = "item in list">{{ item.className }}</li>
+		</ul>
+	</div>
+	<script src='../js/jquery.js'></script>
+	<script>
+		var vm = new Vue({
+			el:"#box",
+			//初始胡数据
+			data:{
+				list:[]
+			},
+			//自定义的方法
+			methods:{
+				getData(){
+					//此种ajax请求使用具json格式数据。
+					//如果jsonp数据的话，需要做处理
+					var url = 'http://datainfo.duapp.com/shopdata/getclass.php';
+					// this指向问题
+					var that = this;
+					axios.get(url)
+					.then(function(response){
+						console.log(response.data);
+						console.log(this)
+						that.list = response.data;
+					})
+					.catch(function(error){
+						console.log(error)
+					});
+				}
+			}
+		})
+	</script>
+</body>
+</html>

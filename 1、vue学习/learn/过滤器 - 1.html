@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>过滤器</title>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li v-for = 'item in list'>{{ item.name }}--{{ item.age | ageStr}}--{{item.sex | sexStr}}</li>
+		</ul>
+	</div>
+	<script src='../js/jquery.js'></script>
+	<script>
+		// 过滤器
+		Vue.filter('ageStr', function(value){
+			return value + "岁"
+		});
+		Vue.filter('sexStr', function(value){
+			if(value == '0'){
+				return '男'
+			}else if(value == 1){
+				return '女'
+			}
+		});
+		var vm = new Vue({
+			el:"#box",
+			//初始胡数据
+			data:{
+				list:[{
+					name:'Zhang san',
+					age :30,
+					sex:0
+				},{
+					name:'Wan san',
+					age :30,
+					sex:0
+				},{
+					name:'Li li',
+					age :30,
+					sex:1
+				}]
+			},
+			//自定义的方法
+			methods:{
+				changeLi:function(){
+					console.log(this);
+					this.users = ['Vue','react','angular']
+				}
+			}
+		})
+	</script>
+</body>
+</html>

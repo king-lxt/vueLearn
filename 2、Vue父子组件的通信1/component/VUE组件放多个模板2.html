@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>vue组件2</title>
+	</head>
+
+	<body>
+		<div id="box">
+			<aaa></aaa>
+		</div>
+		<template id="aaa">
+			<h3 @click='change'>{{ msg }}</h3>
+			<ul>
+				<li v-for="val in arr">{{ val }}</li>
+			</ul>
+		</template>
+
+		<script src="bower_components/vue/dist/vue.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script>
+			//定义vue组件
+			var Aaa = Vue.extend({
+				//data必须是数据
+				data() {
+					return {
+						msg: "点击我",
+						arr:['a','b','c']						
+					}
+				},
+				methods:{
+					change:function(){
+						alert("我被点击了")
+					}
+				},
+				template: "#aaa"
+			});
+
+			Vue.component('aaa', Aaa)
+
+			var vm = new Vue({
+				el: "#box",
+			});
+		</script>
+	</body>
+
+</html>

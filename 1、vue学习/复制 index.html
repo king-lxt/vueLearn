@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title></title>
+	<style>
+		.red{
+			border-right: 2px solid red
+		}
+		.colors{
+			color: red
+		}
+		.fonts{
+			font-size: 28px
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<span v-once>这个将不会改变: {{ msg }}</span>
+		<img :src='imgSrc' :class='{ red : isRed}' alt="照片">
+		<div :class='[classA, classB]'>122</div>
+		<div :style='{ fontSize: size + "px"}'>学习vue</div>
+	</div>
+	<script src='js/jquery.js'></script>
+	<script src='bower_components/vue/dist/vue.min.js'></script>
+	<script>
+		new Vue({
+			el:"#box",
+			data:{
+				msg:'你好0',
+				imgSrc:"http://scimg.jb51.net/allimg/131125/8-131125154H13a.jpg",
+				'isRed': true,
+				classA:'colors',
+				classB: 'fonts',
+				size:'30'
+			}
+		})
+	</script>
+</body>
+</html>

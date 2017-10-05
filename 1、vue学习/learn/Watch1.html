@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>VUE监听数据</title>
+	<link rel="stylesheet" href="">
+	<script src="../js/vue.min.js"></script>
+</head>
+<body>
+	<div id="box">
+		<input type="text" v-model = 'search'>
+		<ul>
+			<li v-for = 'item in testArr'>{{ item }}</li>
+		</ul>
+	</div>
+	<script>
+		var wv = new Vue({
+			el: "#box",
+			data:{
+				search:'',
+				list:['apple', 'banana', 'oranger', 'lemon'],
+				testArr:[]
+			},
+			//监听数据
+			watch:{
+				search:function(newVal,oldVal){
+					var arr = [];
+					this.testArr = this.list
+					var that = this;
+					this.testArr.forEach( function(item) {
+						if(item.indexOf(newVal) != -1){
+							arr.push(item)
+						}
+					});
+					this.testArr = arr;
+				}
+			},
+		})
+	</script>
+</body>
+</html>

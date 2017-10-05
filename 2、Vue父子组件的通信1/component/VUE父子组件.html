@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>vue组件</title>
+	</head>
+
+	<body>
+		<div id="box">
+			<aaa></aaa>
+		</div>
+
+		<script src="bower_components/vue/dist/vue.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script>
+			var vm = new Vue({
+				el: "#box",
+				data: {
+					a: "aaa"
+				},
+				components: {
+					"aaa": {
+						template: "<h3>我是aaa组件</h3><bbb></bbb>",
+						components: {
+							"bbb": {
+								template: "<h3>我是bbb组件</h3>"
+							},
+						}
+					},
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

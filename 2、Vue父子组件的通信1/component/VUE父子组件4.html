@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>vue组件(子组件获取父组件的数据props)</title>
+	</head>
+
+	<body>
+		<div id="box">
+			<aaa></aaa>
+		</div>
+		<template id="aaa">
+			<span>我是父级</span>
+			<input type="button" value="按钮" />
+			<bbb :m="msg"></bbb>
+		</template>
+		<script src="bower_components/vue/dist/vue.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script>
+			var vm = new Vue({
+				el: "#box",
+				data: {
+					a: "aaa"
+				},
+				components: {
+					"aaa": {
+						data() {
+							return {
+								msg: "我是父组件的数据"
+							}
+						},
+						template: "#aaa",
+						components: {
+							"bbb": {
+								data(){
+									return {
+										a:"我是子组件"
+									}
+								},
+								template: "<h3>我是子组件组件-->{{ a }}</h3>"
+							},
+						}
+					},
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

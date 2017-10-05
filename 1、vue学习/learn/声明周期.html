@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script src='../js/vue.min.js'></script>
+</head>
+
+<body>
+    <div id="box">{{ msg }}
+        <button type="button">按钮</button>
+        <button type="button" @click='deleteMsg()'>销毁</button>
+    </div>
+    <script>
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            msg: 'hello'
+        },
+        methods: {
+            deleteMsg() {
+                this.$destroy();
+            }
+        },
+        beforeCreate() {
+            console.log('我被创建之前')
+        },
+        created() {
+            console.log('我被创建')
+        },
+        beforeMount() {
+            console.log('我被挂载之前')
+        },
+        mounted() {
+            console.log('我被挂载')
+        },
+        beforeUpdate() {
+            console.log('更新之前')
+        },
+        updated() {
+            console.log('更新')
+        },
+        beforeDestroy() {
+            console.log('销毁之前')
+        },
+        destroyed() {
+            console.log('销毁')
+        }
+    })
+    document.getElementsByTagName("button")[0].onclick = function() {
+        vm.msg = '1'
+    }
+    </script>
+</body>
+
+</html>

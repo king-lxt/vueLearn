@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible " content="IE=edge ">
+	<title>v-if</title>
+	<link rel="stylesheet " href=" ">
+	<script src="../js/vue.min.js "></script>
+</head>
+<body>
+	<div id="box">
+		<div class="test" v-if = 'isOk'>if为真</div>
+		<div class="test" v-else = 'isOk'>if为假</div>
+		<div class="test" v-show = 'isNotOk'>if为真</div>
+	</div>
+	<script>
+		var wv = new Vue({
+			el: "#box ",
+			data:{
+				isOk: false,
+				isNotOk: false
+			}
+		})
+	</script>
+</body>
+</html>

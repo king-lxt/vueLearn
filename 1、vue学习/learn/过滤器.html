@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>过滤器</title>
+	<script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<body>
+	<div id="box">
+		{{ num |  ageStr}}
+	</div>
+	<script src='../js/jquery.js'></script>
+	<script>
+		// 过滤器
+		Vue.filter('ageStr', function(value){
+			return value + "岁"
+		})
+		var vm = new Vue({
+			el:"#box",
+			//初始胡数据
+			data:{
+				num:100
+			},
+			//自定义的方法
+			methods:{
+				changeLi:function(){
+					console.log(this);
+					this.users = ['Vue','react','angular']
+				}
+			}
+		})
+	</script>
+</body>
+</html>
