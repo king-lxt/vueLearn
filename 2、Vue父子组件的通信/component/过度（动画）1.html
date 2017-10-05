@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box {
+				width: 600px;
+				margin: 0 auto;
+			}
+			
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<input type="button" value="按鈕" @click="toggle" />
+			<div id="div1" class="animated" v-show="bSign" transition="bounce"></div>
+		</div>
+
+		<script src="bower_components/vue/dist/vue.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script>
+			new Vue({
+				el: "#box",
+				data: {
+					bSign: true
+				},
+				methods: {
+					//				toggle:function(){
+					//					alert(1)
+					//				}
+					toggle() {
+						this.bSign = !this.bSign;
+					}
+				},
+				transitions:{//定义动画
+					bounce:{
+						enterClass:'zoomInLeft',
+						leaveClass:'zoomOutRight'
+					}
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

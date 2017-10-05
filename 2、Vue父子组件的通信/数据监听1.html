@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title></title>
+</head>
+<body>
+	<div id="box" >
+		{{ json | json}}
+		<br	/>
+		{{ b }}
+	</div>
+	
+	
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
+	<script>
+		
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				json:{name:"li",age:"27"},
+				b:"2"
+			}
+		});
+		vm.$watch("json",function(){
+			alert("数据a发生了变化")
+		},{deep:true})
+		//deep:true,深度监视数据
+		document.onclick = function(){
+			vm.json.name = 2221;
+			vm.b = 2221
+		}
+	</script>
+</body>
+</html>

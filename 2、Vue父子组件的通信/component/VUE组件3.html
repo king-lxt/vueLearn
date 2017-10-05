@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>vue组件2</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="box" >
+		<aaa></aaa>
+	</div>
+	
+	
+	<script src="bower_components/vue/dist/vue.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script>
+		//定义vue组件
+		var Aaa = Vue.extend({
+			template:"<h3>我是标题3</h3>"
+		});
+		
+		
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				bSign:true
+			},
+			//组件
+			components:{
+				aaa:Aaa//局部组件
+			}
+		});
+		
+	</script>
+</body>
+</html>

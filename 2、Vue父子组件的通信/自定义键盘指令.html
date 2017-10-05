@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>自定义键盘指令 </title>
+</head>
+<body>
+	<div id="box" >
+		<input type="text" @keydown.ctrl = "show" />
+	</div>
+	
+	
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
+	<script>
+		//获取 键盘的键盘码子
+//		document.onkeydown = function(ev){
+//			console.log(ev.keyCode)
+//		}
+		
+		//自定义键盘指令
+		Vue.directive('on').keyCodes.ctrl = 17
+		new Vue({
+			el:"#box",
+			data:{
+				msg:"<b>welcome</b>"
+			},methods:{
+				show:function(){
+					alert(1)
+				}
+			}
+		});
+		
+	</script>
+</body>
+</html>

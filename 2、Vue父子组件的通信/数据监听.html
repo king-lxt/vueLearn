@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title></title>
+</head>
+<body>
+	<div id="box" >
+		<div v-html="a"></div>
+		<div>{{ b }}</div>
+	</div>
+	
+	
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
+	<script>
+		
+		var vm = new Vue({
+			el:"#box",
+			data:{
+				a:"111",
+				b:"2"
+			}
+		});
+		vm.$watch("a",function(){
+			alert("数据a发生了变化")
+		})
+		document.onclick = function(){
+			vm.a = 2221;
+			vm.b = 2221
+		}
+	</script>
+</body>
+</html>
